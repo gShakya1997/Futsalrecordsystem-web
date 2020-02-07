@@ -23,7 +23,7 @@ import {
 //react navigation  react native
 
 
-class MyForm extends React.Component {
+class Content extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -74,11 +74,11 @@ class MyForm extends React.Component {
                         </Navbar>
                     </>
                 </div>
-                {/* <Switch>
-                    <Route exact path="/login" component={Login} />
-                    <Route exact path="/register" component={Registration} />
+                <Switch>
+                    {/* <Route exact path="/login" component={Login} />
+                    <Route exact path="/register" component={Registration} /> */}
                     <Route component={this.Notfound} />
-                </Switch> */}
+                </Switch>
                 <div className="p-3 mb-2 bg-dark text-white">
                     <this.Footer />
                 </div>
@@ -87,4 +87,4 @@ class MyForm extends React.Component {
     }
 }
 
-ReactDom.render(<MyForm />, document.getElementById("root"))
+ReactDom.render(<Content />, document.getElementById("root"))
