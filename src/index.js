@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 // import Login from "./Components/Login/Login";
-// import Registration from "./Components/Registration/Registration"
+import Registration from "./Components/Registration/FutsalRegistration"
 import {
     Navbar,
     Nav,
@@ -18,10 +18,6 @@ import {
     Switch,
     Route
 } from "react-router-dom";
-
-//react-router-dom browswer
-//react navigation  react native
-
 
 class Content extends React.Component {
     constructor(props) {
@@ -74,9 +70,9 @@ class Content extends React.Component {
                         </Navbar>
                     </>
                 </div>
-                <Switch>
-                    {/* <Route exact path="/login" component={Login} />
-                    <Route exact path="/register" component={Registration} /> */}
+                <Switch >
+                    {/* <Route exact path="/login" component={Login} /> */}
+                    <Route exact path="/register" component={Registration} />
                     <Route component={this.Notfound} />
                 </Switch>
                 <div className="p-3 mb-2 bg-dark text-white">
