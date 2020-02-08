@@ -16,9 +16,12 @@ module.exports = {
                 use: "babel-loader"
             },
             {
-                test:/\.css$/,
+                test: /\.css$/,
                 // exclude:/node_modules/,
-                use:["style-loader","css-loader"]
+                use: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.(png|jpg|svg)$/, loader: 'url-loader?limit=8192'
             }
         ]
     }, devServer: {

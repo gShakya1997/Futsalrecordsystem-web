@@ -19,25 +19,61 @@ import {
     Route
 } from "react-router-dom";
 
-class Content extends React.Component {
+class Root extends React.Component {
     constructor(props) {
         super(props);
     }
 
     Footer = () => {
         return (
-            <Row>
-                <Col sm={6}>
-                    Contact us: info@gmail.com<br />
-                    Phone no: +9779837485767<br />
-                    Email: gunjan.shakya@gmail.com
+            <div className="p-3 mb-2 bg-dark text-white">
+                <Row>
+                    <Col sm={6}>
+                        Contact us: info@gmail.com<br />
+                        Phone no: +9779837485767<br />
+                        Email: gunjan.shakya@gmail.com
                 </Col>
-                <Col sm={4}>
-                    Copyright@2020
+                    <Col sm={4}>
+                        Copyright@2020
                 </Col>
-                <Col sm={4}>
-                </Col>
-            </Row>
+                    <Col sm={4}>
+                    </Col>
+                </Row>
+            </div>
+        )
+    }
+
+    Header = () => {
+        return (
+            <div>
+                <>
+                    <Navbar bg="dark" variant="dark">
+                        <Navbar.Brand as={Link} to="/home">
+                            <img
+                            src={require("./images/ball.svg")}
+                            width="30"
+                            className="d-inline-block align-top"/>
+                            {' '}
+                            Futsal Record
+                        </Navbar.Brand>
+                        <Nav className="mr-auto">
+                            <Nav.Link as={Link} to="/home">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                            <Nav.Link as={Link} to="/register">Register</Nav.Link>
+                            <Nav.Link as={Link} to="/users">User's List</Nav.Link>
+                            <Nav.Link href="login">About us</Nav.Link>
+                            <Nav.Link href="login">Contact</Nav.Link>
+                        </Nav>
+                    </Navbar>
+                </>
+                <div className="p-3 mb-2">
+                    <Switch>
+                        {/* <Route exact path="/login" component={Login} /> */}
+                        <Route exact path="/register" component={Registration} />
+                        <Route component={this.Notfound} />
+                    </Switch>
+                </div>
+            </div>
         )
     }
 
@@ -55,32 +91,11 @@ class Content extends React.Component {
     render() {
         return (
             <Router>
-                <div>
-                    <>
-                        <Navbar bg="dark" variant="dark">
-                            <Navbar.Brand as={Link} to="/home">Futsal Record</Navbar.Brand>
-                            <Nav className="mr-auto">
-                                <Nav.Link as={Link} to="/home">Home</Nav.Link>
-                                <Nav.Link as={Link} to="/login">Login</Nav.Link>
-                                <Nav.Link as={Link} to="/register">Register</Nav.Link>
-                                <Nav.Link as={Link} to="/users">User's List</Nav.Link>
-                                <Nav.Link href="login">About us</Nav.Link>
-                                <Nav.Link href="login">Contact</Nav.Link>
-                            </Nav>
-                        </Navbar>
-                    </>
-                </div>
-                <Switch >
-                    {/* <Route exact path="/login" component={Login} /> */}
-                    <Route exact path="/register" component={Registration} />
-                    <Route component={this.Notfound} />
-                </Switch>
-                <div className="p-3 mb-2 bg-dark text-white">
-                    <this.Footer />
-                </div>
+                <this.Header />
+                <this.Footer />
             </Router>
         )
     }
 }
 
-ReactDom.render(<Content />, document.getElementById("root"))
+ReactDom.render(<Root />, document.getElementById("root"))
