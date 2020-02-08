@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 // import Login from "./Components/Login/Login";
-import Registration from "./Components/Registration/FutsalRegistration"
+import Registration from "./Components/Registration/Registration"
 import {
     Navbar,
     Nav,
@@ -58,7 +58,7 @@ class Content extends React.Component {
                 <div>
                     <>
                         <Navbar bg="dark" variant="dark">
-                            <Navbar.Brand as={Link} to="/home">My website</Navbar.Brand>
+                            <Navbar.Brand as={Link} to="/home">Futsal Record</Navbar.Brand>
                             <Nav className="mr-auto">
                                 <Nav.Link as={Link} to="/home">Home</Nav.Link>
                                 <Nav.Link as={Link} to="/login">Login</Nav.Link>
