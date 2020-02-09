@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
-// import Login from "./Components/Login/Login";
+import Login from "./Components/Login/Login";
 import Registration from "./Components/Registration/Registration"
 import {
     Navbar,
@@ -32,10 +32,10 @@ class Root extends React.Component {
                         Contact us: info@gmail.com<br />
                         Phone no: +9779837485767<br />
                         Email: gunjan.shakya@gmail.com
-                </Col>
+                    </Col>
                     <Col sm={4}>
                         Copyright@2020
-                </Col>
+                    </Col>
                     <Col sm={4}>
                     </Col>
                 </Row>
@@ -68,7 +68,7 @@ class Root extends React.Component {
                 </>
                 <div className="p-3 mb-2">
                     <Switch>
-                        {/* <Route exact path="/login" component={Login} /> */}
+                        <Route exact path="/login" component={Login} />
                         <Route exact path="/register" component={Registration} />
                         <Route component={this.Notfound} />
                     </Switch>

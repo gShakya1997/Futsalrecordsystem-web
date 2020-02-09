@@ -96,6 +96,7 @@ class Registration extends React.Component {
         ).then((response) => {
             console.log(response);
             localStorage.setItem("token", response.data.token);
+            location.href = "/login";
         }).catch((err) => {
             console.log(err);
         });
@@ -150,6 +151,7 @@ class Registration extends React.Component {
         ).then((response) => {
             console.log(response.data);
             localStorage.setItem("token", response.data.token);
+            location.href = "/login";
         }).catch((err) => {
             console.log(err);
         });
@@ -157,7 +159,7 @@ class Registration extends React.Component {
 
     render() {
         if (this.state.isRegistered === true) {
-            return <Redirect to="/home" />
+            return <Redirect to="/login" />
         }
         return (
             <Container>
