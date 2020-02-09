@@ -5,19 +5,16 @@ import {
     FormLabel,
     ButtonToolbar,
     ToggleButtonGroup,
-    ToggleButton
+    ToggleButton,
+    Container,
+    Row,
+    Col,
+    Card
 } from "react-bootstrap";
-import {
-    MDBContainer,
-    MDBRow,
-    MDBCol,
-    MDBCardHeader,
-    MDBIcon
-} from "mdbreact";
 import Axios from "axios";
 import { Redirect } from "react-router-dom";
 
-class FutsalRegistration extends React.Component {
+class Registration extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -81,7 +78,7 @@ class FutsalRegistration extends React.Component {
     //submit handler for futsal
     submitHandlerFutsal = (e) => {
         e.preventDefault();
-        var data = {
+        var dataFutsal = {
             futsalName: this.state.futsalName,
             futsalAddress: this.state.futsalAddress,
             futsalEmail: this.state.futsalEmail,
@@ -90,19 +87,16 @@ class FutsalRegistration extends React.Component {
             futsalCPassword: this.state.futsalCPassword,
             futsalOpeningTime: this.state.futsalOpeningTime,
             futsalClosingTime: this.state.futsalClosingTime,
-            futsalPrice: this.state.futsalPrice
-        }
-        var headers = {
-            "Content-type": "application/json"
+            futsalPrice: this.state.futsalPrice,
+            isRegistered: true
         }
         Axios.post(
             "http://localhost:3007/futsal/register",
-            data,
-            headers
+            dataFutsal
         ).then((response) => {
             console.log(response);
-        }).then((data) => {
-            console.log(data);
+            localStorage.setItem("token", response.data.token);
+            location.href = "/login";
         }).catch((err) => {
             console.log(err);
         });
@@ -157,7 +151,7 @@ class FutsalRegistration extends React.Component {
         ).then((response) => {
             console.log(response.data);
             localStorage.setItem("token", response.data.token);
-            <Redirect to="/home"/>
+            location.href = "/login";
         }).catch((err) => {
             console.log(err);
         });
@@ -165,19 +159,19 @@ class FutsalRegistration extends React.Component {
 
     render() {
         if (this.state.isRegistered === true) {
-            return <Redirect to="/home" />
+            return <Redirect to="/login" />
         }
         return (
-            <MDBContainer>
-                <MDBRow>
+            <Container>
+                <Row>
                     {/* Registration form for Futsal Owner */}
-                    <MDBCol md="6">
+                    <Col md="6">
                         <Form onSubmit={this.submitHandlerFutsal}>
-                            <MDBCardHeader className="form-header warm-flame-gradient rounded">
+                            <Card.Header className="form-header warm-flame-gradient rounded">
                                 <h3 className="my-3">
-                                    <MDBIcon icon="lock" /> Futsal Registration
+                                    Futsal Registration
                                 </h3>
-                            </MDBCardHeader>
+                            </Card.Header>
                             <Form.Group controlId="formBasicFutsalName">
                                 <Form.Control type="text" placeholder="Futsal name" value={this.state.futsalName} onChange={this.futsalNameHandler} />
                             </Form.Group>
@@ -217,16 +211,16 @@ class FutsalRegistration extends React.Component {
                                 </Button>
                             </div>
                         </Form>
-                    </MDBCol>
+                    </Col>
 
                     {/* Registration form for user */}
-                    <MDBCol md="6">
+                    <Col md="6">
                         <Form onSubmit={this.submitHandlerUser}>
-                            <MDBCardHeader className="form-header warm-flame-gradient rounded">
+                            <Card.Header>
                                 <h3 className="my-3">
-                                    <MDBIcon icon="lock" /> User Registration
+                                    User Registration
                                 </h3>
-                            </MDBCardHeader>
+                            </Card.Header>
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Control type="text" placeholder="Username" value={this.state.username} onChange={this.usernameHandler} />
                             </Form.Group>
@@ -248,9 +242,9 @@ class FutsalRegistration extends React.Component {
                             <FormLabel>Gender</FormLabel>
                             <ButtonToolbar>
                                 <ToggleButtonGroup type="radio" name="options">
-                                    <ToggleButton value={"Male"} checked={this.state.gender === "Male"} onChange={this.genderHandler}>Male</ToggleButton>
-                                    <ToggleButton value={"Female"} checked={this.state.gender === "Female"} onChange={this.genderHandler}>Female</ToggleButton>
-                                    <ToggleButton value={"Others"} checked={this.state.gender === "Others"} onChange={this.genderHandler}>Others</ToggleButton>
+                                    <ToggleButton variant="dark" value={"Male"} checked={this.state.gender === "Male"} onChange={this.genderHandler}>Male</ToggleButton>
+                                    <ToggleButton variant="dark" value={"Female"} checked={this.state.gender === "Female"} onChange={this.genderHandler}>Female</ToggleButton>
+                                    <ToggleButton variant="dark" value={"Others"} checked={this.state.gender === "Others"} onChange={this.genderHandler}>Others</ToggleButton>
                                 </ToggleButtonGroup>
                             </ButtonToolbar>
                             <div className="text-center py-4 mt-3">
@@ -259,11 +253,11 @@ class FutsalRegistration extends React.Component {
                                 </Button>
                             </div>
                         </Form>
-                    </MDBCol>
-                </MDBRow>
-            </MDBContainer>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
 
-export default FutsalRegistration;
+export default Registration;
