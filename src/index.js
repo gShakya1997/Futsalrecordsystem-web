@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDom from "react-dom";
 import Login from "./Components/Login/Login";
-import Registration from "./Components/Registration/Registration"
+import Registration from "./Components/Registration/Registration";
+import HomePage from "./Components/Home/Home";
 import {
     Navbar,
     Nav,
@@ -30,7 +31,7 @@ class Root extends React.Component {
                 <Row>
                     <Col sm={6}>
                         Contact us: info@gmail.com<br />
-                        Phone no: +9779837485767<br />
+                        Phone no: +9779860915753<br />
                         Email: gunjan.shakya@gmail.com
                     </Col>
                     <Col sm={4}>
@@ -49,20 +50,14 @@ class Root extends React.Component {
                 <>
                     <Navbar bg="dark" variant="dark">
                         <Navbar.Brand as={Link} to="/home">
-                            <img
-                            src={require("./images/ball.svg")}
-                            width="30"
-                            className="d-inline-block align-top"/>
-                            {' '}
                             Futsal Record
                         </Navbar.Brand>
                         <Nav className="mr-auto">
                             <Nav.Link as={Link} to="/home">Home</Nav.Link>
                             <Nav.Link as={Link} to="/login">Login</Nav.Link>
                             <Nav.Link as={Link} to="/register">Register</Nav.Link>
-                            <Nav.Link as={Link} to="/users">User's List</Nav.Link>
                             <Nav.Link href="login">About us</Nav.Link>
-                            <Nav.Link href="login">Contact</Nav.Link>
+                            <Nav.Link href="login">Reviews</Nav.Link>
                         </Nav>
                     </Navbar>
                 </>
@@ -70,6 +65,7 @@ class Root extends React.Component {
                     <Switch>
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/register" component={Registration} />
+                        <Route exact path="/home" component={HomePage} />
                         <Route component={this.Notfound} />
                     </Switch>
                 </div>
