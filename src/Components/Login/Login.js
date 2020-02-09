@@ -58,6 +58,26 @@ class Login extends React.Component {
             dataUser
         ).then((response) => {
             console.log(response.data);
+            localStorage.setItem("userToken", response.data.token);
+        }).catch((err) => {
+            console.log(err);
+        });
+    };
+
+    //Submit handler for futsal
+    submitHandlerFutsal = (e) => {
+        e.preventDefault();
+        var dataFutsal = {
+            futsalName: this.state.futsalName,
+            futsalPassword: this.state.futsalPassword,
+            isOnline: true
+        }
+        console.log(dataFutsal);
+        Axios.post(
+            "http://localhost:3007/futsal/login",
+            dataFutsal
+        ).then((response) => {
+            console.log(response.data);
             localStorage.setItem("token", response.data.token);
         }).catch((err) => {
             console.log(err);
