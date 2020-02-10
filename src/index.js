@@ -45,6 +45,12 @@ class Root extends React.Component {
         )
     }
 
+    handleLogout = (e) => {
+        e.preventDefault();
+        localStorage.removeItem('token');
+        location.href = "/login";
+    }
+
     Header = () => {
         return (
             <div>
@@ -59,6 +65,7 @@ class Root extends React.Component {
                             <Nav.Link as={Link} to="/register">Register</Nav.Link>
                             <Nav.Link as={Link} to="/customersdata">Customer Data</Nav.Link>
                             <Nav.Link href="login">Reviews</Nav.Link>
+                            <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
                         </Nav>
                     </Navbar>
                 </>
