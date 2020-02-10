@@ -3,6 +3,7 @@ import ReactDom from "react-dom";
 import Login from "./Components/Login/Login";
 import Registration from "./Components/Registration/Registration";
 import HomePage from "./Components/Home/Home";
+import CustomerData from "./Components/Customer/Customer"
 import {
     Navbar,
     Nav,
@@ -27,7 +28,7 @@ class Root extends React.Component {
 
     Footer = () => {
         return (
-            <div className="p-3 mb-2 bg-dark text-white">
+            <div className="p-3 mb-2 bg-dark text-white page-footer">
                 <Row>
                     <Col sm={6}>
                         Contact us: info@gmail.com<br />
@@ -56,7 +57,7 @@ class Root extends React.Component {
                             <Nav.Link as={Link} to="/home">Home</Nav.Link>
                             <Nav.Link as={Link} to="/login">Login</Nav.Link>
                             <Nav.Link as={Link} to="/register">Register</Nav.Link>
-                            <Nav.Link href="login">About us</Nav.Link>
+                            <Nav.Link as={Link} to="/customersdata">Customer Data</Nav.Link>
                             <Nav.Link href="login">Reviews</Nav.Link>
                         </Nav>
                     </Navbar>
@@ -66,6 +67,7 @@ class Root extends React.Component {
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/register" component={Registration} />
                         <Route exact path="/home" component={HomePage} />
+                        <Route exact path="/customersdata" component={CustomerData} />
                         <Route component={this.Notfound} />
                     </Switch>
                 </div>
