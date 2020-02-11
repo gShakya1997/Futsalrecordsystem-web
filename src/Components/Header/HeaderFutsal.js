@@ -3,12 +3,9 @@ import {
     Nav,
     Navbar
 } from "react-bootstrap";
-import CustomerData from "../Customer/CustomersData";
 import {
     BrowserRouter as Router,
-    Link,
-    Switch,
-    Route
+    Link
 } from "react-router-dom";
 
 class HeaderFutsal extends React.Component{
