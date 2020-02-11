@@ -2,17 +2,20 @@ import React from "react";
 import {
     Form,
     Button,
-    FormLabel,
-    ButtonToolbar,
-    ToggleButtonGroup,
-    ToggleButton,
     Container,
     Row,
     Col,
     Card
 } from "react-bootstrap";
 import Axios from "axios";
-import { Redirect } from "react-router-dom";
+import {
+    Link,
+    Redirect,
+    Route
+} from "react-router-dom";
+import HeaderFutsal from "../Header/HeaderFutsal";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 class Login extends React.Component {
     constructor(props) {
@@ -79,60 +82,67 @@ class Login extends React.Component {
         ).then((response) => {
             console.log(response.data);
             localStorage.setItem("token", response.data.token);
+            location.href="/customersdata";
         }).catch((err) => {
             console.log(err);
         });
     };
 
     render() {
-        if (this.state.isOnline === true) {
-            location.href = "/login";
+        if(localStorage.getItem('token')){
+            return <Redirect to='/customersdata'/>
         }
         return (
-            <Container>
-                <Row>
-                    <Col md="6">
-                        <Form onSubmit={this.submitHandlerFutsal}>
-                            <Card.Header className="form-header warm-flame-gradient rounded">
-                                <h3 className="my-3">
-                                    Futsal Login
+            <React.Fragment>
+                <Route component={Header} />
+                <Container>
+                    <Row>
+                        <Col md="6">
+                            <Form onSubmit={this.submitHandlerFutsal}>
+                                <Card.Header className="form-header warm-flame-gradient rounded">
+                                    <h3 className="my-3">
+                                        Futsal Login
                                 </h3>
-                            </Card.Header>
-                            <Form.Group controlId="formBasicFutsalName">
-                                <Form.Control type="text" placeholder="Futsal name" value={this.state.futsalName} onChange={this.futsalNameHandler} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Control type="password" placeholder="Password" value={this.state.futsalPassword} onChange={this.futsalPasswordHandler} />
-                            </Form.Group>
-                            <div className="text-center py-4 mt-3">
-                                <Button variant="primary" type="submit">
-                                    Login as Futsal Owner
+                                </Card.Header>
+                                <Form.Group controlId="formBasicFutsalName">
+                                    <Form.Control type="text" placeholder="Futsal name" value={this.state.futsalName} onChange={this.futsalNameHandler} />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicPassword">
+                                    <Form.Control type="password" placeholder="Password" value={this.state.futsalPassword} onChange={this.futsalPasswordHandler} />
+                                </Form.Group>
+                                <div className="text-center py-4 mt-3">
+                                    <Button variant="primary" type="submit">
+                                        Login as Futsal Owner
                                 </Button>
-                            </div>
-                        </Form>
-                    </Col>
-                    <Col md="6">
-                        <Form onSubmit={this.submitHandlerUser}>
-                            <Card.Header className="form-header warm-flame-gradient rounded">
-                                <h3 className="my-3">
-                                    User Login
+                                </div>
+                            </Form>
+                        </Col>
+                        <Col md="6">
+                            <Form onSubmit={this.submitHandlerUser}>
+                                <Card.Header className="form-header warm-flame-gradient rounded">
+                                    <h3 className="my-3">
+                                        User Login
                                 </h3>
-                            </Card.Header>
-                            <Form.Group controlId="formBasicUsername">
-                                <Form.Control type="text" placeholder="Username" value={this.state.username} onChange={this.usernameHandler} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicUserPassword">
-                                <Form.Control type="password" placeholder="Password" value={this.state.password} onChange={this.passwordHandler} />
-                            </Form.Group>
-                            <div className="text-center py-4 mt-3">
-                                <Button variant="primary" type="submit">
-                                    Login as User
+                                </Card.Header>
+                                <Form.Group controlId="formBasicUsername">
+                                    <Form.Control type="text" placeholder="Username" value={this.state.username} onChange={this.usernameHandler} />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicUserPassword">
+                                    <Form.Control type="password" placeholder="Password" value={this.state.password} onChange={this.passwordHandler} />
+                                </Form.Group>
+                                <div className="text-center py-4 mt-3">
+                                    <Button variant="primary" type="submit">
+                                        Login as User
                                 </Button>
-                            </div>
-                        </Form>
-                    </Col>
-                </Row>
-            </Container>
+                                </div>
+                            </Form>
+                        </Col>
+                    </Row>
+                </Container>
+                <React.Fragment>
+                    <Route component={Footer} />
+                </React.Fragment>
+            </React.Fragment>
         )
     }
 }

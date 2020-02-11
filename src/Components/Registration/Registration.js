@@ -12,7 +12,9 @@ import {
     Card
 } from "react-bootstrap";
 import Axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 class Registration extends React.Component {
     constructor(props) {
@@ -162,100 +164,106 @@ class Registration extends React.Component {
             return <Redirect to="/login" />
         }
         return (
-            <Container>
-                <Row>
-                    {/* Registration form for Futsal Owner */}
-                    <Col md="6">
-                        <Form onSubmit={this.submitHandlerFutsal}>
-                            <Card.Header className="form-header warm-flame-gradient rounded">
-                                <h3 className="my-3">
-                                    Futsal Registration
+            <React.Fragment>
+                <Route component={Header} />
+                <Container>
+                    <Row>
+                        {/* Registration form for Futsal Owner */}
+                        <Col md="6">
+                            <Form onSubmit={this.submitHandlerFutsal}>
+                                <Card.Header className="form-header warm-flame-gradient rounded">
+                                    <h3 className="my-3">
+                                        Futsal Registration
                                 </h3>
-                            </Card.Header>
-                            <Form.Group controlId="formBasicFutsalName">
-                                <Form.Control type="text" placeholder="Futsal name" value={this.state.futsalName} onChange={this.futsalNameHandler} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicAddress">
-                                <Form.Control type="text" placeholder="Address" value={this.state.futsalAddress} onChange={this.futsalAddressHandler} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Control type="email" placeholder="Email address" value={this.state.futsalEmail} onChange={this.futsalEmailHandler} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicPhone">
-                                <Form.Control type="number" placeholder="Phone no" value={this.state.futsalPhone} onChange={this.futsalPhoneHandler} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Control type="password" placeholder="Password" value={this.state.futsalPassword} onChange={this.futsalPasswordHandler} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicCPassword">
-                                <Form.Control type="password" placeholder="Confirm Password" value={this.state.futsalCPassword} onChange={this.futsalCPasswordHandler} />
-                            </Form.Group>
-                            <Form.Text className="text-muted">
-                                HH:MM am/pm
+                                </Card.Header>
+                                <Form.Group controlId="formBasicFutsalName">
+                                    <Form.Control type="text" placeholder="Futsal name" value={this.state.futsalName} onChange={this.futsalNameHandler} />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicAddress">
+                                    <Form.Control type="text" placeholder="Address" value={this.state.futsalAddress} onChange={this.futsalAddressHandler} />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicEmail">
+                                    <Form.Control type="email" placeholder="Email address" value={this.state.futsalEmail} onChange={this.futsalEmailHandler} />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicPhone">
+                                    <Form.Control type="number" placeholder="Phone no" value={this.state.futsalPhone} onChange={this.futsalPhoneHandler} />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicPassword">
+                                    <Form.Control type="password" placeholder="Password" value={this.state.futsalPassword} onChange={this.futsalPasswordHandler} />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicCPassword">
+                                    <Form.Control type="password" placeholder="Confirm Password" value={this.state.futsalCPassword} onChange={this.futsalCPasswordHandler} />
+                                </Form.Group>
+                                <Form.Text className="text-muted">
+                                    HH:MM am/pm
                             </Form.Text>
-                            <Form.Group controlId="formBasicOpeningTime">
-                                <Form.Control type="text" placeholder="Opening Time" value={this.state.futsalOpeningTime} onChange={this.futsalOpeningTimeHandler} />
-                            </Form.Group>
-                            <Form.Text className="text-muted">
-                                HH:MM am/pm
+                                <Form.Group controlId="formBasicOpeningTime">
+                                    <Form.Control type="text" placeholder="Opening Time" value={this.state.futsalOpeningTime} onChange={this.futsalOpeningTimeHandler} />
+                                </Form.Group>
+                                <Form.Text className="text-muted">
+                                    HH:MM am/pm
                             </Form.Text>
-                            <Form.Group controlId="formBasicClosingTime">
-                                <Form.Control type="text" placeholder="Closing Time" value={this.state.futsalClosingTime} onChange={this.futsalClosingTimeHandler} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicFutsalPrice">
-                                <Form.Control type="number" placeholder="Price per hour" value={this.state.futsalPrice} onChange={this.futsalPriceHandler} />
-                            </Form.Group>
-                            <div className="text-center py-4 mt-3">
-                                <Button variant="primary" type="submit">
-                                    Register as Futsal Owner
+                                <Form.Group controlId="formBasicClosingTime">
+                                    <Form.Control type="text" placeholder="Closing Time" value={this.state.futsalClosingTime} onChange={this.futsalClosingTimeHandler} />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicFutsalPrice">
+                                    <Form.Control type="number" placeholder="Price per hour" value={this.state.futsalPrice} onChange={this.futsalPriceHandler} />
+                                </Form.Group>
+                                <div className="text-center py-4 mt-3">
+                                    <Button variant="primary" type="submit">
+                                        Register as Futsal Owner
                                 </Button>
-                            </div>
-                        </Form>
-                    </Col>
+                                </div>
+                            </Form>
+                        </Col>
 
-                    {/* Registration form for user */}
-                    <Col md="6">
-                        <Form onSubmit={this.submitHandlerUser}>
-                            <Card.Header>
-                                <h3 className="my-3">
-                                    User Registration
+                        {/* Registration form for user */}
+                        <Col md="6">
+                            <Form onSubmit={this.submitHandlerUser}>
+                                <Card.Header>
+                                    <h3 className="my-3">
+                                        User Registration
                                 </h3>
-                            </Card.Header>
-                            <Form.Group controlId="formBasicUsername">
-                                <Form.Control type="text" placeholder="Username" value={this.state.username} onChange={this.usernameHandler} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicUserAddress">
-                                <Form.Control type="text" placeholder="Address" value={this.state.address} onChange={this.addressHandler} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicUserEmail">
-                                <Form.Control type="email" placeholder="Email address" value={this.state.email} onChange={this.emailHandler} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicUserPhone">
-                                <Form.Control type="number" placeholder="Phone no" value={this.state.phone} onChange={this.phoneHandler} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicUserPassword">
-                                <Form.Control type="password" placeholder="Password" value={this.state.password} onChange={this.passwordHandler} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicUserCPassword">
-                                <Form.Control type="password" placeholder="Confirm Password" value={this.state.cpassword} onChange={this.cPasswordHandler} />
-                            </Form.Group>
-                            <FormLabel>Gender</FormLabel>
-                            <ButtonToolbar>
-                                <ToggleButtonGroup type="radio" name="options">
-                                    <ToggleButton variant="dark" value={"Male"} checked={this.state.gender === "Male"} onChange={this.genderHandler}>Male</ToggleButton>
-                                    <ToggleButton variant="dark" value={"Female"} checked={this.state.gender === "Female"} onChange={this.genderHandler}>Female</ToggleButton>
-                                    <ToggleButton variant="dark" value={"Others"} checked={this.state.gender === "Others"} onChange={this.genderHandler}>Others</ToggleButton>
-                                </ToggleButtonGroup>
-                            </ButtonToolbar>
-                            <div className="text-center py-4 mt-3">
-                                <Button variant="primary" type="submit">
-                                    Register as User
+                                </Card.Header>
+                                <Form.Group controlId="formBasicUsername">
+                                    <Form.Control type="text" placeholder="Username" value={this.state.username} onChange={this.usernameHandler} />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicUserAddress">
+                                    <Form.Control type="text" placeholder="Address" value={this.state.address} onChange={this.addressHandler} />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicUserEmail">
+                                    <Form.Control type="email" placeholder="Email address" value={this.state.email} onChange={this.emailHandler} />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicUserPhone">
+                                    <Form.Control type="number" placeholder="Phone no" value={this.state.phone} onChange={this.phoneHandler} />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicUserPassword">
+                                    <Form.Control type="password" placeholder="Password" value={this.state.password} onChange={this.passwordHandler} />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicUserCPassword">
+                                    <Form.Control type="password" placeholder="Confirm Password" value={this.state.cpassword} onChange={this.cPasswordHandler} />
+                                </Form.Group>
+                                <FormLabel>Gender</FormLabel>
+                                <ButtonToolbar>
+                                    <ToggleButtonGroup type="radio" name="options">
+                                        <ToggleButton variant="dark" value={"Male"} checked={this.state.gender === "Male"} onChange={this.genderHandler}>Male</ToggleButton>
+                                        <ToggleButton variant="dark" value={"Female"} checked={this.state.gender === "Female"} onChange={this.genderHandler}>Female</ToggleButton>
+                                        <ToggleButton variant="dark" value={"Others"} checked={this.state.gender === "Others"} onChange={this.genderHandler}>Others</ToggleButton>
+                                    </ToggleButtonGroup>
+                                </ButtonToolbar>
+                                <div className="text-center py-4 mt-3">
+                                    <Button variant="primary" type="submit">
+                                        Register as User
                                 </Button>
-                            </div>
-                        </Form>
-                    </Col>
-                </Row>
-            </Container>
+                                </div>
+                            </Form>
+                        </Col>
+                    </Row>
+                </Container>
+                <React.Fragment>
+                    <Route component={Footer} />
+                </React.Fragment>
+            </React.Fragment>
         )
     }
 }
