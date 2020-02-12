@@ -8,7 +8,9 @@ import Login from "./Components/Login/Login";
 import Registration from "./Components/Registration/Registration";
 import CustomerData from "./Components/Customer/CustomersData";
 import HomePage from "./Components/Home/Home";
+import FutsalList from "./Components/Futsal/FutsalList";
 import FutsalRoute from "./PrivateRoute/FutsalRoute";
+import UserRoute from "./PrivateRoute/UserRoute";
 
 function Website(){
     return(
@@ -19,8 +21,8 @@ function Website(){
                     <Route exact path="/home" component={HomePage}/>
                     <Route exact path="/register" component={Registration}/>
                     <Route exact path="/login" component={Login}/>
-                    {/* <FutsalRoute path="/futsalDashboard" component={FutsalDashboard}/> */}
-                    <Route path="/customersdata" component={CustomerData}/>
+                    <FutsalRoute exact path="/customersdata" component={CustomerData}/>
+                    <UserRoute exact path="/futsallist" component={FutsalList}/>
                 </Switch>
             </Router>
         </>

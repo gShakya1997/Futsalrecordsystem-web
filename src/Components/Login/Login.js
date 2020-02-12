@@ -62,6 +62,7 @@ class Login extends React.Component {
         ).then((response) => {
             console.log(response.data);
             localStorage.setItem("userToken", response.data.token);
+            location.href="/futsallist";
         }).catch((err) => {
             console.log(err);
         });
@@ -91,6 +92,8 @@ class Login extends React.Component {
     render() {
         if(localStorage.getItem('token')){
             return <Redirect to='/customersdata'/>
+        } else if(localStorage.getItem("userToken")){
+            return <Redirect to="/futsallist"/>
         }
         return (
             <React.Fragment>
