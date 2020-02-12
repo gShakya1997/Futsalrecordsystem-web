@@ -23,16 +23,25 @@ class CustomerData extends React.Component {
                 headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }
             },
             show: false,
+            showAddCustomer: false,
             selectedCustomerData: {}
         }
     }
 
-    fullnameHandler = (e) => {
-        this.setState({ customerFullname: e.target.value });
+    // changeHandler = (e) => {
+        //     this.setState({
+        //         [e.target.selectedCustomerData] : e.target.value
+        //     })
+        // }
+
+    fullnameHandler =  (e) => {
+        this.setState({customerFullname : e.target.value });
+        console.log(this.state.customerFullname);
     }
 
-    emailHandler = (e) => {
-        this.setState({ customerEmail: e.target.value });
+    emailHandler = (email) => {
+        console.log(email)
+        this.setState({ email: email.target.value });
     }
 
     phoneNoHandler = (e) => {
@@ -48,17 +57,36 @@ class CustomerData extends React.Component {
     }
 
     handleUpdate = (updatedCustomer) => {
-        console.log(updatedCustomer);
+        console.log(this.state.customers);
         Axios.put(
             `http://localhost:3007/customers/${updatedCustomer}`,
-            { customerFullname: updatedCustomer.customerFullname },
-            this.state.config)
+            { customers: updatedCustomer.customers },   
+            this.state.config,
+            )
             .then((response) => {
                 console.log(response)
             }).catch((err) => {
                 console.log(err)
             });
     };
+
+    handleDelete = (customerId) => {
+        const filteredCustomer = this.state.customers.filter((customer) => {
+            return customer._id !== customerId
+        })
+        this.setState({
+            customers: filteredCustomer
+        })
+        console.log(customerId.customerFullname);
+        Axios.delete(
+            `http://localhost:3007/customers/${customerId}`,
+            this.state.config
+        ).then((response)=>{
+            console.log(response)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
 
     handlerAdd = (e) => {
         e.preventDefault();
@@ -97,7 +125,8 @@ class CustomerData extends React.Component {
 
     handleClose = () => {
         this.setState({
-            show: false
+            show: false,
+            showAddCustomer: false
         });
     };
 
@@ -112,18 +141,9 @@ class CustomerData extends React.Component {
 
     handleOpenAddCustomer = () => {
         this.setState({
-            show: true
+            showAddCustomer: true
         });
     };
-
-    handleDelete = (customerId) => {
-        const filteredCustomer = this.state.customers.filter((customer) => {
-            return customer._id !== customerId
-        })
-        this.setState({
-            customers: filteredCustomer
-        })
-    }
 
     render() {
         if (this.state.customers === null) {
@@ -145,7 +165,7 @@ class CustomerData extends React.Component {
                                     <th>Gender</th>
                                     <th>Address</th>
                                     <th>Actions</th>
-                                    <th><Button>
+                                    <th><Button onClick={this.handleOpenAddCustomer}>
                                         Add customer
                                         </Button></th>
                                 </tr>
@@ -171,17 +191,17 @@ class CustomerData extends React.Component {
                                 }
                             </tbody>
                         </Table>
-                        <Modal show={this.state.show} onHide={this.handleClose} animation={false}>
+                        <Modal show={this.state.show} onHide={this.handleClose} animation={true}>
                             <Modal.Header closeButton>
                                 <Modal.Title>Update customer data</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                                 <Form>
                                     <Form.Group controlId="formBasicEditFullname">
-                                        <Form.Control type="text" value={this.state.selectedCustomerData.customerFullname} onChange={this.fullnameHandler.bind(this)} />
+                                        <Form.Control type="text" value={this.state.selectedCustomerData.customerFullname} onChange={this.fullnameHandler} />
                                     </Form.Group>
                                     <Form.Group controlId="formBasicEditEmail">
-                                        <Form.Control type="email" value={this.state.selectedCustomerData.customerEmail} onChange={this.emailHandler} />
+                                        <Form.Control type="email" value={this.state.selectedCustomerData.customerEmail} onChange={() => this.emailHandler(this.state.selectedCustomerData.customerEmail)} />
                                     </Form.Group>
                                     <Form.Group controlId="formBasicEditPhoneNo">
                                         <Form.Control type="number" value={this.state.selectedCustomerData.customerPhoneNo} onChange={this.phoneNoHandler} />
@@ -200,6 +220,38 @@ class CustomerData extends React.Component {
                                 </Button>
                                 <Button variant="primary" onClick={() => this.handleUpdate(this.state.selectedCustomerData._id)}>
                                     Update
+                                </Button>
+                            </Modal.Footer>
+                        </Modal>
+                        <Modal show={this.state.showAddCustomer} onHide={this.handleClose} animation={true}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Add customer data</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <Form>
+                                    <Form.Group controlId="formBasicFullname">
+                                        <Form.Control type="text" value={this.setState.customerFullname} onChange={this.fullnameHandler} />
+                                    </Form.Group>
+                                    <Form.Group controlId="formBasicEmail">
+                                        <Form.Control type="email" value={this.setState.customerEmail} onChange={this.emailHandler} />
+                                    </Form.Group>
+                                    <Form.Group controlId="formBasicPhoneNo">
+                                        <Form.Control type="number" value={this.setState.customerPhoneNo} onChange={this.phoneNoHandler} />
+                                    </Form.Group>
+                                    <Form.Group controlId="formBasicAddress">
+                                        <Form.Control type="text" value={this.setState.customerAddress} onChange={this.addressHandler} />
+                                    </Form.Group>
+                                    <Form.Group controlId="formBasicGender">
+                                        <Form.Control type="text" value={this.setState.customerGender} onChange={this.genderHandler} />
+                                    </Form.Group>
+                                </Form>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="danger" onClick={this.handleClose}>
+                                    Close
+                                </Button>
+                                <Button variant="primary" onClick={this.handlerAdd}>
+                                    Add
                                 </Button>
                             </Modal.Footer>
                         </Modal>

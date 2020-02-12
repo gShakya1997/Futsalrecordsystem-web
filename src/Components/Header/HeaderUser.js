@@ -35,12 +35,12 @@ export default class HeaderUser extends React.Component{
             <div>
                 <>
                     <Navbar bg="dark" variant="dark">
-                        <Navbar.Brand as={Link} to="/home">
+                        <Navbar.Brand as={Link} to="/futsallist">
                             Futsal Record
                         </Navbar.Brand>
                         <Nav className="mr-auto">
-                            <Nav.Link as={Link} to="/customersdata">Futsal Data</Nav.Link>
-                            <Nav.Link as={Link} to="/customersdata">Event List</Nav.Link>
+                            <Nav.Link as={Link} to="/futsallist">Futsal Data</Nav.Link>
+                            <Nav.Link as={Link} to="/eventlist">Event List</Nav.Link>
                             <Nav.Link as={Link} to="/customersdata">Profile</Nav.Link>
                             <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
                         </Nav>

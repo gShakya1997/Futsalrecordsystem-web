@@ -35,7 +35,7 @@ class HeaderFutsal extends React.Component{
             <div>
                 <>
                     <Navbar bg="dark" variant="dark">
-                        <Navbar.Brand as={Link} to="/home">
+                        <Navbar.Brand as={Link} to="/customersdata">
                             Futsal Record
                         </Navbar.Brand>
                         <Nav className="mr-auto">
