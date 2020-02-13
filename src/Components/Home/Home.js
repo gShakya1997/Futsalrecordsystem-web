@@ -37,7 +37,7 @@ class HomePage extends React.Component {
                                         Futsal record system let's you add, update and delete customer data and add events.
                                         It also allows you to record reservation.
                                     </Card.Text>
-                                    <Button href="/register" variant="dark">Register for free</Button>
+                                    <Button className="button1" href="/register" variant="dark">Register for free</Button>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -48,7 +48,7 @@ class HomePage extends React.Component {
                                     <Card.Text>
                                         Futsal record system allows you to show list of futsal and events
                                     </Card.Text>
-                                    <Button href="/register" variant="dark">Register for free</Button>
+                                    <Button className="button1" href="/register" variant="dark">Register for free</Button>
                                 </Card.Body>
                             </Card>
                         </Col>

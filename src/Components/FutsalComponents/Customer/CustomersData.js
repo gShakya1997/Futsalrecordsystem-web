@@ -11,7 +11,6 @@ import {
     BrowserRouter as Router,
     Route
 } from "react-router-dom"
-import "./Customer.css";
 import Header from "../../Header/HeaderFutsal";
 
 class CustomerData extends React.Component {
