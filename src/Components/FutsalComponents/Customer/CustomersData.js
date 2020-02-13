@@ -19,6 +19,11 @@ class CustomerData extends React.Component {
         super(props);
         this.state = {
             customers: [],
+            customerFullname: "",
+            customerGender: "",
+            customerPhoneNo:"",
+            customerEmail: "",
+            customerAddress: "",
             config: {
                 headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }
             },
@@ -52,6 +57,26 @@ class CustomerData extends React.Component {
 
     genderUpdateHandler = (e) => {
         this.setState({selectedCustomerData:{...this.state.selectedCustomerData,["customerGender"]: e.target.value}});
+    }
+
+    fullnameHandler = (e) => {
+        this.setState({customerFullname: e.target.value})
+    }
+
+    emailHandler = (e) => {
+        this.setState({customerEmail: e.target.value})
+    }
+
+    phoneNoHandler = (e) => {
+        this.setState({customerPhoneNo: e.target.value})
+    }
+
+    addressHandler = (e) => {
+        this.setState({customerAddress: e.target.value})
+    }
+
+    genderHandler = (e) => {
+        this.setState({customerGender: e.target.value})
     }
 
     handleUpdate = (updatedCustomer) => {
@@ -99,10 +124,11 @@ class CustomerData extends React.Component {
         console.log(addCustomer);
         Axios.post(
             "http://localhost:3007/customers",
-            { customerFullname: this.state.customerFullname },
+            addCustomer,
             this.state.config
         ).then((response) => {
             console.log(response.data);
+            location.href ="/customersdata";
         }).catch((err) => {
             console.log(err)
         })
@@ -207,7 +233,7 @@ class CustomerData extends React.Component {
                                     </Form.Group>
                                     <Form.Group controlId="formBasicEditAddress">
                                         <Form.Control type="text" value={this.state.selectedCustomerData.customerAddress} onChange={this.addressUpdateHandler} />
-                                    </Form.Group>
+                                    </Form.Group> 
                                     <Form.Group controlId="formBasicEditGender">
                                         <Form.Control type="text" value={this.state.selectedCustomerData.customerGender} onChange={this.genderUpdateHandler} />
                                     </Form.Group>
@@ -229,19 +255,19 @@ class CustomerData extends React.Component {
                             <Modal.Body>
                                 <Form>
                                     <Form.Group controlId="formBasicFullname">
-                                        <Form.Control name="fullname" type="text" value={this.state.customerFullname} onChange={this.fullnameHandler} />
+                                        <Form.Control placeholder="Fullname" type="text" value={this.state.customerFullname} onChange={this.fullnameHandler} />
                                     </Form.Group>
                                     <Form.Group controlId="formBasicEmail">
-                                        <Form.Control name="email" type="email" value={this.state.customerEmail} onChange={this.emailHandler} />
+                                        <Form.Control placeholder="Email" type="email" value={this.state.customerEmail} onChange={this.emailHandler} />
                                     </Form.Group>
                                     <Form.Group controlId="formBasicPhoneNo">
-                                        <Form.Control name="phoneno" type="number" value={this.state.customerPhoneNo} onChange={this.phoneNoHandler} />
+                                        <Form.Control placeholder="Phone No" type="number" value={this.state.customerPhoneNo} onChange={this.phoneNoHandler} />
                                     </Form.Group>
                                     <Form.Group controlId="formBasicAddress">
-                                        <Form.Control name="address" type="text" value={this.state.customerAddress} onChange={this.addressHandler} />
+                                        <Form.Control placeholder="Address" value={this.state.customerAddress} onChange={this.addressHandler} />
                                     </Form.Group>
                                     <Form.Group controlId="formBasicGender">
-                                        <Form.Control name="gender" type="text" value={this.state.customerGender} onChange={this.genderHandler} />
+                                        <Form.Control placeholder="Gender" value={this.state.customerGender} onChange={this.genderHandler} />
                                     </Form.Group>
                                 </Form>
                             </Modal.Body>
