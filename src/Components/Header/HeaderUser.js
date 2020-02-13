@@ -41,7 +41,7 @@ export default class HeaderUser extends React.Component{
                         <Nav className="mr-auto">
                             <Nav.Link as={Link} to="/futsallist">Futsal Data</Nav.Link>
                             <Nav.Link as={Link} to="/eventlist">Event List</Nav.Link>
-                            <Nav.Link as={Link} to="/customersdata">Profile</Nav.Link>
+                            <Nav.Link as={Link} to="/userprofile">Profile</Nav.Link>
                             <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
                         </Nav>
                     </Navbar>

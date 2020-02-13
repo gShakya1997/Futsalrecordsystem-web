@@ -19,10 +19,7 @@ export default class FutsalList extends React.Component {
             futsal: [],
             config: {
                 headers: { "Authorization": `Bearer ${localStorage.getItem("userToken")}` }
-            },
-            show: false,
-            selectedFutsal: {}
-
+            }
         }
     }
 
@@ -35,7 +32,7 @@ export default class FutsalList extends React.Component {
                 futsal: response.data
             });
         }).catch((err) => {
-
+            console.log(err);   
         });
     };
 

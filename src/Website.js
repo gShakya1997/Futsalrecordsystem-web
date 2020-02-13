@@ -6,10 +6,12 @@ import {
 } from "react-router-dom";
 import Login from "./Components/Login/Login";
 import Registration from "./Components/Registration/Registration";
-import CustomerData from "./Components/Customer/CustomersData";
+import CustomerData from "./Components/FutsalComponents/Customer/CustomersData";
 import HomePage from "./Components/Home/Home";
+import Reviews from "./Components/Reviews/Reviews";
 import FutsalList from "./Components/UserComponents/FutsalList";
 import EventList from "./Components/UserComponents/EventList";
+import ProfileUser from "./Components/UserComponents/Profile";
 import FutsalRoute from "./PrivateRoute/FutsalRoute";
 import UserRoute from "./PrivateRoute/UserRoute";
 
@@ -22,9 +24,11 @@ function Website(){
                     <Route exact path="/home" component={HomePage}/>
                     <Route exact path="/register" component={Registration}/>
                     <Route exact path="/login" component={Login}/>
+                    <Route exact path="/reviews" component={Reviews}/>
                     <FutsalRoute exact path="/customersdata" component={CustomerData}/>
                     <UserRoute exact path="/futsallist" component={FutsalList}/>
                     <UserRoute exact path="/eventlist" component={EventList}/>
+                    <UserRoute exact path="/userprofile" component={ProfileUser}/>
                 </Switch>
             </Router>
         </>

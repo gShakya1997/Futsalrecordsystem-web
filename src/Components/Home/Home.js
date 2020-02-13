@@ -17,8 +17,6 @@ import {
 import "../main.css"
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import Login from "../Login/Login";
-import Registration from "../Registration/Registration";
 
 class HomePage extends React.Component {
     constructor(props) {

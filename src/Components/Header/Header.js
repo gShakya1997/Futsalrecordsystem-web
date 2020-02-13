@@ -38,7 +38,7 @@ class Header extends React.Component{
                             <Nav.Link as={Link} to="/home">Home</Nav.Link>
                             <Nav.Link as={Link} to="/login">Login</Nav.Link>
                             <Nav.Link as={Link} to="/register">Register</Nav.Link>
-                            <Nav.Link href="login">Reviews</Nav.Link>
+                            <Nav.Link as={Link} to="/reviews">Reviews</Nav.Link>
                         </Nav>
                     </Navbar>
                 </>
