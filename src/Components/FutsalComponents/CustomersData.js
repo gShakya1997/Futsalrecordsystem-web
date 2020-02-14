@@ -32,12 +32,6 @@ class CustomerData extends React.Component {
         }
     }
 
-    // changeHandler = (e) => {
-    //     this.setState({
-    //         [e.target.selectedCustomerData] : e.target.value
-    //     })
-    // }
-
     fullnameUpdateHandler = (e) => {
         this.setState({selectedCustomerData:{...this.state.selectedCustomerData,["customerFullname"]: e.target.value}});
     }

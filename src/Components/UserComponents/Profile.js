@@ -47,7 +47,7 @@ export default class Profile extends React.Component {
                                 <p>Phone: {this.state.userProfile.phone}</p>
                                 <hr />
                                 <p className="mb-0">
-                                <Button className="btnAction">Delete my account</Button>
+                                <Button className="btnAction">Edit my account</Button>
                                 </p>
                             </Alert>
                         </div>

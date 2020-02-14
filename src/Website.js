@@ -8,6 +8,7 @@ import Login from "./Components/Login/Login";
 import Registration from "./Components/Registration/Registration";
 import CustomerData from "./Components/FutsalComponents/CustomersData";
 import AddEvent from "./Components/FutsalComponents/AddEvent";
+import FutsalProfile from "./Components/FutsalComponents/FutsalProfile";
 import HomePage from "./Components/Home/Home";
 import Reviews from "./Components/Reviews/Reviews";
 import FutsalList from "./Components/UserComponents/FutsalList";
@@ -28,6 +29,7 @@ function Website(){
                     <Route exact path="/reviews" component={Reviews}/>
                     <FutsalRoute exact path="/customersdata" component={CustomerData}/>
                     <FutsalRoute exact path="/addevent" component={AddEvent}/>
+                    <FutsalRoute exact path="/futsalprofile" component={FutsalProfile}/>
                     <UserRoute exact path="/futsallist" component={FutsalList}/>
                     <UserRoute exact path="/eventlist" component={EventList}/>
                     <UserRoute exact path="/userprofile" component={ProfileUser}/>
