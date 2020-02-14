@@ -1,32 +1,18 @@
-#content{
-    margin-bottom: 200px;
-    position: relative;
+.containerMargin {
+    margin-top: 20px;
 }
 
-#footer{
-    position: relative;
-    bottom:0;
-    right: 0;
-    left: 0;
-    width:100%;
-    height:auto;
-}
-
-.btn-space1 {
-    margin-right: 5px;
-}
-
-.button1 {
+.btnAction {
+    border-radius: 15px;
+    background-color: #343A40;
+    border: #343A40;
+    color: #FFFFFF;
     text-align: center;
+    font-size: 18px;
+    width: auto;
+    transition: all 0.5s;
     cursor: pointer;
-    display: inline-block;
-    border-radius: 5px;
-    margin: 1rem;
-    text-decoration: solid;
-    font-family: system-ui;
-    font-size: 16px;
-    text-transform: uppercase;
-    background-image: linear-gradient(-45deg, #C0C0C0 0, #000000 100%);
+    margin: 5px;
 }
 
 .card1 {
@@ -38,3 +24,12 @@
     padding-left: 50px;
     margin-top: 5px;
   }
+
+.modalHeaderFooter {
+    background: #343A40;
+    color: lavender;
+}
+
+.modalBody {
+    background: darkgray;
+}

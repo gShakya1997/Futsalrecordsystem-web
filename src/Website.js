@@ -6,8 +6,8 @@ import {
 } from "react-router-dom";
 import Login from "./Components/Login/Login";
 import Registration from "./Components/Registration/Registration";
-import CustomerData from "./Components/FutsalComponents/Customer/CustomersData";
-import AddEvent from "./Components/FutsalComponents/AddEvent/AddEvent";
+import CustomerData from "./Components/FutsalComponents/CustomersData";
+import AddEvent from "./Components/FutsalComponents/AddEvent";
 import HomePage from "./Components/Home/Home";
 import Reviews from "./Components/Reviews/Reviews";
 import FutsalList from "./Components/UserComponents/FutsalList";

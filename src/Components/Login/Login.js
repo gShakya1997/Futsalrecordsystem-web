@@ -14,7 +14,6 @@ import {
     Route
 } from "react-router-dom";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 
 class Login extends React.Component {
     constructor(props) {
@@ -97,7 +96,7 @@ class Login extends React.Component {
         return (
             <React.Fragment>
                 <Route component={Header} />
-                <Container>
+                <Container className="containerMargin">
                     <Row>
                         <Col md="6">
                             <Form onSubmit={this.submitHandlerFutsal}>
@@ -113,7 +112,7 @@ class Login extends React.Component {
                                     <Form.Control type="password" placeholder="Password" value={this.state.futsalPassword} onChange={this.futsalPasswordHandler} />
                                 </Form.Group>
                                 <div className="text-center py-4 mt-3">
-                                    <Button variant="primary" type="submit">
+                                    <Button className="btnAction" variant="primary" type="submit">
                                         Login as Futsal Owner
                                 </Button>
                                 </div>
@@ -133,7 +132,7 @@ class Login extends React.Component {
                                     <Form.Control type="password" placeholder="Password" value={this.state.password} onChange={this.passwordHandler} />
                                 </Form.Group>
                                 <div className="text-center py-4 mt-3">
-                                    <Button variant="primary" type="submit">
+                                    <Button className="btnAction" variant="primary" type="submit">
                                         Login as User
                                 </Button>
                                 </div>
@@ -141,9 +140,6 @@ class Login extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-                <React.Fragment>
-                    <Route component={Footer} />
-                </React.Fragment>
             </React.Fragment>
         )
     }

@@ -14,7 +14,6 @@ import {
 import Axios from "axios";
 import { Redirect, Route } from "react-router-dom";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 
 class Registration extends React.Component {
     constructor(props) {
@@ -166,7 +165,7 @@ class Registration extends React.Component {
         return (
             <React.Fragment>
                 <Route component={Header} />
-                <Container>
+                <Container className="containerMargin">
                     <Row>
                         {/* Registration form for Futsal Owner */}
                         <Col md="6">
@@ -210,7 +209,7 @@ class Registration extends React.Component {
                                     <Form.Control type="number" placeholder="Price per hour" value={this.state.futsalPrice} onChange={this.futsalPriceHandler} />
                                 </Form.Group>
                                 <div className="text-center py-4 mt-3">
-                                    <Button variant="primary" type="submit">
+                                    <Button className="btnAction" type="submit">
                                         Register as Futsal Owner
                                 </Button>
                                 </div>
@@ -246,13 +245,13 @@ class Registration extends React.Component {
                                 <FormLabel>Gender</FormLabel>
                                 <ButtonToolbar>
                                     <ToggleButtonGroup type="radio" name="options">
-                                        <ToggleButton variant="dark" value={"Male"} checked={this.state.gender === "Male"} onChange={this.genderHandler}>Male</ToggleButton>
-                                        <ToggleButton variant="dark" value={"Female"} checked={this.state.gender === "Female"} onChange={this.genderHandler}>Female</ToggleButton>
-                                        <ToggleButton variant="dark" value={"Others"} checked={this.state.gender === "Others"} onChange={this.genderHandler}>Others</ToggleButton>
+                                        <ToggleButton variant="success" value={"Male"} checked={this.state.gender === "Male"} onChange={this.genderHandler}>Male</ToggleButton>
+                                        <ToggleButton variant="success" value={"Female"} checked={this.state.gender === "Female"} onChange={this.genderHandler}>Female</ToggleButton>
+                                        <ToggleButton variant="success" value={"Others"} checked={this.state.gender === "Others"} onChange={this.genderHandler}>Others</ToggleButton>
                                     </ToggleButtonGroup>
                                 </ButtonToolbar>
                                 <div className="text-center py-4 mt-3">
-                                    <Button variant="primary" type="submit">
+                                    <Button className="btnAction" type="submit">
                                         Register as User
                                 </Button>
                                 </div>
@@ -260,9 +259,6 @@ class Registration extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-                <React.Fragment>
-                    <Route component={Footer} />
-                </React.Fragment>
             </React.Fragment>
         )
     }

@@ -11,7 +11,7 @@ import {
     BrowserRouter as Router,
     Route
 } from "react-router-dom"
-import Header from "../../Header/HeaderFutsal";
+import Header from "../Header/HeaderFutsal";
 
 class CustomerData extends React.Component {
     constructor(props) {
@@ -120,7 +120,6 @@ class CustomerData extends React.Component {
             customerAddress: this.state.customerAddress,
             customerGender: this.state.customerGender
         }
-        console.log(addCustomer);
         Axios.post(
             "http://localhost:3007/customers",
             addCustomer,
@@ -176,7 +175,7 @@ class CustomerData extends React.Component {
             return (
                 <React.Fragment>
                     <Route component={Header} />
-                    <Container className="mt-4">
+                    <Container className="containerMargin">
                         <div>
                             <h1>Customer data</h1>
                         </div>
@@ -216,10 +215,10 @@ class CustomerData extends React.Component {
                             </tbody>
                         </Table>
                         <Modal show={this.state.show} onHide={this.handleClose} animation={true}>
-                            <Modal.Header closeButton>
+                            <Modal.Header className="modalHeaderFooter" closeButton>
                                 <Modal.Title>Update customer data</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>
+                            <Modal.Body className="modalBody">
                                 <Form>
                                     <Form.Group controlId="formBasicEditFullname">
                                         <Form.Control type="text" value={this.state.selectedCustomerData.customerFullname} onChange={this.fullnameUpdateHandler} />
@@ -238,20 +237,20 @@ class CustomerData extends React.Component {
                                     </Form.Group>
                                 </Form>
                             </Modal.Body>
-                            <Modal.Footer>
+                            <Modal.Footer className="modalHeaderFooter">
                                 <Button variant="danger" onClick={this.handleClose}>
                                     Close
                                 </Button>
-                                <Button variant="primary" onClick={() => this.handleUpdate(this.state.selectedCustomerData._id)}>
+                                <Button variant ="success" onClick={() => this.handleUpdate(this.state.selectedCustomerData._id)}>
                                     Update
                                 </Button>
                             </Modal.Footer>
                         </Modal>
                         <Modal show={this.state.showAddCustomer} onHide={this.handleClose} animation={true}>
-                            <Modal.Header closeButton>
+                            <Modal.Header className="modalHeaderFooter" closeButton>
                                 <Modal.Title>Add customer data</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>
+                            <Modal.Body className="modalBody">
                                 <Form>
                                     <Form.Group controlId="formBasicFullname">
                                         <Form.Control placeholder="Fullname" type="text" value={this.state.customerFullname} onChange={this.fullnameHandler} />
@@ -270,11 +269,11 @@ class CustomerData extends React.Component {
                                     </Form.Group>
                                 </Form>
                             </Modal.Body>
-                            <Modal.Footer>
+                            <Modal.Footer className="modalHeaderFooter">
                                 <Button variant="danger" onClick={this.handleClose}>
                                     Close
                                 </Button>
-                                <Button variant="primary" onClick={this.handlerAdd}>
+                                <Button variant="success" onClick={this.handlerAdd}>
                                     Add
                                 </Button>
                             </Modal.Footer>

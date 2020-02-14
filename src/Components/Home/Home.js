@@ -16,7 +16,6 @@ import {
 } from "react-router-dom";
 import "../main.css"
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -27,7 +26,7 @@ class HomePage extends React.Component {
         return (
             <React.Fragment>
                 <Route component={Header} />
-                <Container id="content">
+                <Container className="containerMargin">
                     <Row>
                         <Col md="6">
                             <Card>
@@ -37,7 +36,7 @@ class HomePage extends React.Component {
                                         Futsal record system let's you add, update and delete customer data and add events.
                                         It also allows you to record reservation.
                                     </Card.Text>
-                                    <Button className="button1" href="/register" variant="dark">Register for free</Button>
+                                    <Button className="btnAction" href="/register" variant="dark">Register for free</Button>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -48,15 +47,12 @@ class HomePage extends React.Component {
                                     <Card.Text>
                                         Futsal record system allows you to show list of futsal and events
                                     </Card.Text>
-                                    <Button className="button1" href="/register" variant="dark">Register for free</Button>
+                                    <Button className="btnAction" href="/register" variant="dark">Register for free</Button>
                                 </Card.Body>
                             </Card>
                         </Col>
                     </Row>
                 </Container>
-                <React.Fragment id="footer">
-                    <Route component={Footer} />
-                </React.Fragment>
             </React.Fragment>
         )
     }

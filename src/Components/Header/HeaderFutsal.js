@@ -42,6 +42,7 @@ class HeaderFutsal extends React.Component{
                             <Nav.Link as={Link} to="/customersdata">Customer Data</Nav.Link>
                             <Nav.Link as={Link} to="/addevent">Add Event</Nav.Link>
                             <Nav.Link as={Link} to="/customersdata">Reservation</Nav.Link>
+                            <Nav.Link as={Link} to="/futsalprofile">Profile</Nav.Link>
                             <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
                         </Nav>
                     </Navbar>

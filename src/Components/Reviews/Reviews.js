@@ -29,7 +29,7 @@ export default class Reviews extends React.Component {
         return (
             <React.Fragment>
                 <Route component={Header} />
-                <Container id="content">
+                <Container className="containerMargin">
                     {
                         this.state.feedbacks.map((feedback) => {
                             return (
