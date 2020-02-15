@@ -9,7 +9,6 @@ import {
 } from "react-bootstrap";
 import Axios from "axios";
 import {
-    Link,
     Redirect,
     Route
 } from "react-router-dom";
@@ -22,8 +21,7 @@ class Login extends React.Component {
             futsalName: "",
             futsalPassword: "",
             username: "",
-            password: "",
-            isOnline: false
+            password: ""
         }
     }
 
@@ -50,19 +48,16 @@ class Login extends React.Component {
         e.preventDefault();
         var dataUser = {
             username: this.state.username,
-            password: this.state.password,
-            isOnline: true
+            password: this.state.password
         }
-        console.log(dataUser);
         Axios.post(
             "http://localhost:3007/users/login",
             dataUser
         ).then((response) => {
-            console.log(response.data);
             localStorage.setItem("userToken", response.data.token);
-            location.href="/futsallist";
-        }).catch((err) => {
-            console.log(err);
+            location.href = "/futsallist";
+        }).catch(() => {
+            alert("Invalid username or password");
         });
     };
 
@@ -71,8 +66,7 @@ class Login extends React.Component {
         e.preventDefault();
         var dataFutsal = {
             futsalName: this.state.futsalName,
-            futsalPassword: this.state.futsalPassword,
-            isOnline: true
+            futsalPassword: this.state.futsalPassword
         }
         console.log(dataFutsal);
         Axios.post(
@@ -81,17 +75,17 @@ class Login extends React.Component {
         ).then((response) => {
             console.log(response.data);
             localStorage.setItem("token", response.data.token);
-            location.href="/customersdata";
-        }).catch((err) => {
-            console.log(err);
+            location.href = "/customersdata";
+        }).catch(() => {
+            alert("Invalid futsalname or password");
         });
     };
 
     render() {
-        if(localStorage.getItem('token')){
-            return <Redirect to='/customersdata'/>
-        } else if(localStorage.getItem("userToken")){
-            return <Redirect to="/futsallist"/>
+        if (localStorage.getItem('token')) {
+            return <Redirect to='/customersdata' />
+        } else if (localStorage.getItem("userToken")) {
+            return <Redirect to="/futsallist" />
         }
         return (
             <React.Fragment>
@@ -106,10 +100,10 @@ class Login extends React.Component {
                                 </h3>
                                 </Card.Header>
                                 <Form.Group controlId="formBasicFutsalName">
-                                    <Form.Control type="text" placeholder="Futsal name" value={this.state.futsalName} onChange={this.futsalNameHandler} />
+                                    <Form.Control required type="text" placeholder="Futsal name" value={this.state.futsalName} onChange={this.futsalNameHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicPassword">
-                                    <Form.Control type="password" placeholder="Password" value={this.state.futsalPassword} onChange={this.futsalPasswordHandler} />
+                                    <Form.Control required type="password" placeholder="Password" value={this.state.futsalPassword} onChange={this.futsalPasswordHandler} />
                                 </Form.Group>
                                 <div className="text-center py-4 mt-3">
                                     <Button className="btnAction" variant="primary" type="submit">
@@ -126,10 +120,10 @@ class Login extends React.Component {
                                 </h3>
                                 </Card.Header>
                                 <Form.Group controlId="formBasicUsername">
-                                    <Form.Control type="text" placeholder="Username" value={this.state.username} onChange={this.usernameHandler} />
+                                    <Form.Control required type="text" placeholder="Username" value={this.state.username} onChange={this.usernameHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicUserPassword">
-                                    <Form.Control type="password" placeholder="Password" value={this.state.password} onChange={this.passwordHandler} />
+                                    <Form.Control required type="password" placeholder="Password" value={this.state.password} onChange={this.passwordHandler} />
                                 </Form.Group>
                                 <div className="text-center py-4 mt-3">
                                     <Button className="btnAction" variant="primary" type="submit">

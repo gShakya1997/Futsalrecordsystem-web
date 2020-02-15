@@ -176,38 +176,38 @@ class Registration extends React.Component {
                                 </h3>
                                 </Card.Header>
                                 <Form.Group controlId="formBasicFutsalName">
-                                    <Form.Control type="text" placeholder="Futsal name" value={this.state.futsalName} onChange={this.futsalNameHandler} />
+                                    <Form.Control required type="text" placeholder="Futsal name" value={this.state.futsalName} onChange={this.futsalNameHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicAddress">
-                                    <Form.Control type="text" placeholder="Address" value={this.state.futsalAddress} onChange={this.futsalAddressHandler} />
+                                    <Form.Control required type="text" placeholder="Address" value={this.state.futsalAddress} onChange={this.futsalAddressHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicEmail">
-                                    <Form.Control type="email" placeholder="Email address" value={this.state.futsalEmail} onChange={this.futsalEmailHandler} />
+                                    <Form.Control required type="email" placeholder="Email address" value={this.state.futsalEmail} onChange={this.futsalEmailHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicPhone">
-                                    <Form.Control type="number" placeholder="Phone no" value={this.state.futsalPhone} onChange={this.futsalPhoneHandler} />
+                                    <Form.Control required type="number" placeholder="Phone no" value={this.state.futsalPhone} onChange={this.futsalPhoneHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicPassword">
-                                    <Form.Control type="password" placeholder="Password" value={this.state.futsalPassword} onChange={this.futsalPasswordHandler} />
+                                    <Form.Control required type="password" placeholder="Password" value={this.state.futsalPassword} onChange={this.futsalPasswordHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicCPassword">
-                                    <Form.Control type="password" placeholder="Confirm Password" value={this.state.futsalCPassword} onChange={this.futsalCPasswordHandler} />
+                                    <Form.Control required type="password" placeholder="Confirm Password" value={this.state.futsalCPassword} onChange={this.futsalCPasswordHandler} />
                                 </Form.Group>
                                 <Form.Text className="text-muted">
                                     HH:MM am/pm
                             </Form.Text>
                                 <Form.Group controlId="formBasicOpeningTime">
-                                    <Form.Control type="text" placeholder="Opening Time" value={this.state.futsalOpeningTime} onChange={this.futsalOpeningTimeHandler} />
-                                </Form.Group>
+                                    <Form.Control required type="text" placeholder="Opening Time" value={this.state.futsalOpeningTime} onChange={this.futsalOpeningTimeHandler} />
+                                </Form.Group> 
                                 <Form.Text className="text-muted">
                                     HH:MM am/pm
                             </Form.Text>
                                 <Form.Group controlId="formBasicClosingTime">
-                                    <Form.Control type="text" placeholder="Closing Time" value={this.state.futsalClosingTime} onChange={this.futsalClosingTimeHandler} />
+                                    <Form.Control required type="text" placeholder="Closing Time" value={this.state.futsalClosingTime} onChange={this.futsalClosingTimeHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicFutsalPrice">
-                                    <Form.Control type="number" placeholder="Price per hour" value={this.state.futsalPrice} onChange={this.futsalPriceHandler} />
-                                </Form.Group>
+                                    <Form.Control required type="number" placeholder="Price per hour" value={this.state.futsalPrice} onChange={this.futsalPriceHandler} />
+                                </Form.Group> 
                                 <div className="text-center py-4 mt-3">
                                     <Button className="btnAction" type="submit">
                                         Register as Futsal Owner
@@ -225,22 +225,22 @@ class Registration extends React.Component {
                                 </h3>
                                 </Card.Header>
                                 <Form.Group controlId="formBasicUsername">
-                                    <Form.Control type="text" placeholder="Username" value={this.state.username} onChange={this.usernameHandler} />
+                                    <Form.Control required type="text" placeholder="Username" value={this.state.username} onChange={this.usernameHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicUserAddress">
-                                    <Form.Control type="text" placeholder="Address" value={this.state.address} onChange={this.addressHandler} />
+                                    <Form.Control required type="text" placeholder="Address" value={this.state.address} onChange={this.addressHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicUserEmail">
-                                    <Form.Control type="email" placeholder="Email address" value={this.state.email} onChange={this.emailHandler} />
+                                    <Form.Control required type="email" placeholder="Email address" value={this.state.email} onChange={this.emailHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicUserPhone">
-                                    <Form.Control type="number" placeholder="Phone no" value={this.state.phone} onChange={this.phoneHandler} />
+                                    <Form.Control required type="number" placeholder="Phone no" value={this.state.phone} onChange={this.phoneHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicUserPassword">
-                                    <Form.Control type="password" placeholder="Password" value={this.state.password} onChange={this.passwordHandler} />
+                                    <Form.Control required type="password" placeholder="Password" value={this.state.password} onChange={this.passwordHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicUserCPassword">
-                                    <Form.Control type="password" placeholder="Confirm Password" value={this.state.cpassword} onChange={this.cPasswordHandler} />
+                                    <Form.Control required type="password" placeholder="Confirm Password" value={this.state.cpassword} onChange={this.cPasswordHandler} />
                                 </Form.Group>
                                 <FormLabel>Gender</FormLabel>
                                 <ButtonToolbar>

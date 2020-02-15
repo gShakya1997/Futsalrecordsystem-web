@@ -12,8 +12,7 @@ export default class FutsalProfile extends React.Component {
             config: {
                 headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }
             },
-            show: false,
-            profile: {}
+            show: false
         }
     }
 
@@ -80,6 +79,19 @@ export default class FutsalProfile extends React.Component {
         });
     };
 
+    deleteHandler = (profileId) => {
+        Axios.delete(
+            `http://localhost:3007/futsal/${profileId}`,
+            this.state.config
+        )
+        .then(() => {
+            localStorage.removeItem("token");   
+            location.href = "/login"
+        }).catch((err)=> {
+            console.log(err);
+        });
+    };
+
     render() {
         if (this.state.futsalProfile === null) {
             return (<h3>Loading.....</h3>);
@@ -102,6 +114,7 @@ export default class FutsalProfile extends React.Component {
                                 <hr />
                                 <p className="mb-0">
                                     <Button className="btnAction" onClick={() => this.handleOpen(this.state.futsalProfile)}>Edit my account</Button>
+                                    <Button className="btnAction" onClick={() => this.deleteHandler(this.state.futsalProfile._id)}>Delete my account</Button>
                                 </p>
                             </Alert>
                             <Modal show={this.state.show} onHide={this.handleClose} animation={true}>
