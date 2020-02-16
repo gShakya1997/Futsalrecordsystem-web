@@ -68,12 +68,10 @@ class Login extends React.Component {
             futsalName: this.state.futsalName,
             futsalPassword: this.state.futsalPassword
         }
-        console.log(dataFutsal);
         Axios.post(
             "http://localhost:3007/futsal/login",
             dataFutsal
         ).then((response) => {
-            console.log(response.data);
             localStorage.setItem("token", response.data.token);
             location.href = "/customersdata";
         }).catch(() => {

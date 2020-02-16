@@ -51,8 +51,8 @@ export default class Profile extends React.Component {
         .then(()=>{
             localStorage.removeItem("userToken"),
             location.href="/login"
-        })
-    }
+        });
+    };
 
     handleOpen = (currentProfile) => {
         this.setState({

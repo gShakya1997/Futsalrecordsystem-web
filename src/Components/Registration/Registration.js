@@ -12,7 +12,7 @@ import {
     Card
 } from "react-bootstrap";
 import Axios from "axios";
-import { Redirect, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Header from "../Header/Header";
 
 class Registration extends React.Component {
@@ -35,7 +35,8 @@ class Registration extends React.Component {
             password: "",
             cpassword: "",
             gender: "Male",
-            isRegistered: false
+            isRegistered: false,
+            selectedFile: null
         }
     }
 
@@ -154,14 +155,11 @@ class Registration extends React.Component {
             localStorage.setItem("userToken", response.data.token);
             location.href = "/login";
         }).catch((err) => {
-            console.log(err);
+            alert("Something is missing");
         });
     }
 
     render() {
-        if (this.state.isRegistered === true) {
-            return <Redirect to="/login" />
-        }
         return (
             <React.Fragment>
                 <Route component={Header} />
@@ -201,13 +199,13 @@ class Registration extends React.Component {
                                 </Form.Group> 
                                 <Form.Text className="text-muted">
                                     HH:MM am/pm
-                            </Form.Text>
+                                </Form.Text>
                                 <Form.Group controlId="formBasicClosingTime">
                                     <Form.Control required type="text" placeholder="Closing Time" value={this.state.futsalClosingTime} onChange={this.futsalClosingTimeHandler} />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicFutsalPrice">
                                     <Form.Control required type="number" placeholder="Price per hour" value={this.state.futsalPrice} onChange={this.futsalPriceHandler} />
-                                </Form.Group> 
+                                </Form.Group>
                                 <div className="text-center py-4 mt-3">
                                     <Button className="btnAction" type="submit">
                                         Register as Futsal Owner
